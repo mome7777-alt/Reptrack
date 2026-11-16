@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0b0d10">
+  <meta name="theme-color" content="#f2f5f7">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="RepTrack">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon-192.png">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <meta name="description" content="Privatni dnevnik treninga bez naloga, reklama i pretplate.">
-  <title>RepTrack V4 — Fitness dnevnik</title>
+  <title>RepTrack V5 — Fitness dnevnik</title>
   <style>
 :root{
   --bg:#0b0d10;--surface:#13171c;--surface-2:#1a2027;--line:#29313a;
@@ -24,13 +24,121 @@
 .rest-dock{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);width:min(calc(100% - 24px),520px);z-index:40;background:#1b242c;border:1px solid var(--lime);border-radius:18px;padding:13px 15px;box-shadow:0 12px 35px rgba(0,0,0,.45)}.rest-dock-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.rest-clock{font-size:30px;font-weight:900;letter-spacing:1px;color:var(--lime);font-variant-numeric:tabular-nums}.rest-actions{display:flex;gap:7px;margin-top:10px}.rest-actions button{flex:1;padding:9px 10px;font-size:12px}.library-filter{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}.library-filter input,.library-filter select{min-width:0;background:#0f1317;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:11px}.library-pick{display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;color:var(--text);width:100%;text-align:left;margin:7px 0}.library-pick small{display:block;color:var(--muted);margin-top:3px}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}@keyframes slide{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}@media(min-width:600px){.screen{padding-left:28px;padding-right:28px}.template-grid{grid-template-columns:repeat(3,1fr)}.stats{gap:14px}.exercise-card{display:grid;grid-template-columns:220px 1fr}.exercise-cover{height:auto;min-height:270px}.modal-wrap{align-items:center}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   </style>
+
+  <style id="reptrack-v5-theme">
+    :root{
+      --bg:#f2f5f7;
+      --surface:#ffffff;
+      --surface-2:#f5f8fa;
+      --line:#dce4e9;
+      --text:#1c2b36;
+      --muted:#687985;
+      --lime:#78bd38;
+      --lime-2:#579b28;
+      --blue:#287fb8;
+      --orange:#c97835;
+      --red:#d94f58;
+      color-scheme:light;
+    }
+    html,body{background:var(--bg)!important;color:var(--text)!important}
+    body{background:linear-gradient(180deg,#f8fafb 0,#f0f4f6 65%,#edf2f4 100%)!important}
+    .topbar{background:rgba(248,250,251,.94)!important;border-bottom:1px solid var(--line)!important}
+    .brand{color:var(--text)!important}
+    .brand-mark{background:#a7e65a!important;color:#183016!important}
+    .avatar{background:linear-gradient(145deg,#e8eff3,#fff)!important;color:#38505f!important}
+    .card,.template,.stat,.exercise-list button,.history-row,.settings-list button,.settings-row{
+      background:var(--surface)!important;border-color:var(--line)!important;color:var(--text)!important;
+      box-shadow:0 5px 18px rgba(31,54,68,.045);
+    }
+    .start-card{background:linear-gradient(135deg,#c8f27c,#9edc4d)!important;color:#203018!important}
+    .start-card p{color:#40582c!important}
+    .primary,.save-set{background:#8bcf45!important;color:#183016!important}
+    .primary:hover,.save-set:hover{background:#7bc338!important}
+    .secondary{background:#edf3f6!important;color:#243746!important;border-color:#d5e0e6!important}
+    .ghost,.back{background:#fff!important;color:#304654!important;border-color:var(--line)!important}
+    .danger{background:#fff0f0!important;color:#bd3f49!important;border-color:#f2cfd1!important}
+    .section-head button,.eyebrow,.pill,.trend{color:#568f27!important}
+    .pill,.trend{background:#edf7e4!important}
+    .template.selected{border-color:#82c844!important;box-shadow:0 0 0 2px #82c844 inset!important}
+    .template.custom{background:#f8fafb!important;color:var(--muted)!important}
+    .exercise-card{background:#fff!important}
+    .exercise-cover{
+      height:auto!important;min-height:0!important;padding:12px!important;display:flex!important;
+      align-items:center!important;justify-content:center!important;position:relative!important;
+      background:#fff!important;border-bottom:1px solid var(--line)!important;
+    }
+    .exercise-cover:after{display:none!important}
+    .exercise-photo{
+      display:block!important;width:100%!important;height:clamp(190px,58vw,330px)!important;
+      max-height:330px!important;object-fit:contain!important;object-position:center!important;
+      background:#fff!important;border-radius:14px!important;
+    }
+    .exercise-cover .muscle{
+      top:18px!important;right:18px!important;background:rgba(31,52,65,.88)!important;
+      color:#fff!important;z-index:2!important;
+    }
+    .exercise-heading{padding:13px 16px 0;background:#fff}
+    .exercise-heading h3{margin:0;font-size:21px;line-height:1.25;color:var(--text)}
+    .exercise-body{background:#fff!important}
+    .prescription{background:#f0f8e8!important;border-color:#d8edc7!important;color:#548c25!important}
+    .prescription span{color:#637783!important}
+    .technique,.previous{background:#f3f7f9!important;border:1px solid #e6edf1!important}
+    .technique b{color:#243746!important}
+    .technique p{color:#405461!important}
+    .technique small,.previous-label{color:#71818b!important}
+    .set-chip{background:#e7eef2!important;color:#2c414e!important}
+    .set-row input,.form-grid input,.form-grid select,.form-grid textarea,
+    .library-filter input,.library-filter select{
+      background:#fff!important;color:#243746!important;border-color:#d6e1e7!important;
+    }
+    .set-row input:focus,.form-grid input:focus,.form-grid select:focus,
+    .form-grid textarea:focus,.library-filter input:focus,.library-filter select:focus{
+      border-color:#80c443!important;outline:none!important;
+      box-shadow:0 0 0 3px rgba(128,196,67,.15)!important;
+    }
+    .set-row .set-no,.set-row .times,.field-labels{color:#71818b!important}
+    .save-set.saved{background:#e8f5dd!important;color:#4d8d23!important}
+    .sticky-finish{background:rgba(242,245,247,.94)!important}
+    .progress-hero{background:linear-gradient(145deg,#e9f1f5,#fff)!important}
+    .metric-big span{color:var(--muted)!important}
+    .chart-grid{stroke:#dce5e9!important}
+    .chart-dot{fill:#fff!important}
+    .chart-label{fill:#71818b!important}
+    .bottom-nav{background:rgba(255,255,255,.96)!important;border-top:1px solid var(--line)!important}
+    .bottom-nav button{color:#71818b!important}
+    .bottom-nav button.active{background:#edf7e4!important;color:#568f27!important}
+    .notice{background:#edf4f7!important;border-color:#dbe7ed!important;color:#405461!important}
+    .modal-wrap{background:rgba(27,43,54,.42)!important}
+    .modal{background:#fff!important;color:var(--text)!important;border-color:var(--line)!important}
+    .modal-head{border-bottom-color:var(--line)!important}
+    .modal-head h2{color:var(--text)!important}
+    .toast{background:#203542!important;color:#fff!important}
+    .rest-dock{
+      background:#fff!important;color:#203542!important;border:1px solid #9bcf68!important;
+      box-shadow:0 14px 38px rgba(28,50,64,.18)!important;
+    }
+    .rest-clock{color:#4f9226!important}
+    .rest-actions .secondary{background:#edf4f7!important}
+    .thumb{background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important;border:1px solid #e3eaee}
+    .pr-card{background:#f4f8fa!important;border-color:#e1e9ed!important}
+    .pr-card b{color:var(--text)!important}
+    .empty{color:#647782!important}
+    @media(min-width:620px){
+      .exercise-photo{height:320px!important}
+      .exercise-cover{padding:16px!important}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    }
+  </style>
+
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <button class="brand" data-nav="home" aria-label="Početna">
         <span class="brand-mark">R</span>
-        <span><strong>RepTrack V3</strong><small>PR sistem · lokalni podaci</small></span>
+        <span><strong>RepTrack V5</strong><small>Trening · progres · lokalni podaci</small></span>
       </button>
       <button id="installBtn" class="ghost compact" hidden>Instaliraj</button>
     </header>
@@ -219,7 +327,7 @@
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${color}"/><stop offset="1" stop-color="#111820"/></linearGradient></defs><rect width="900" height="500" fill="url(#g)"/><circle cx="720" cy="95" r="170" fill="#fff" opacity=".08"/><circle cx="145" cy="450" r="220" fill="#000" opacity=".13"/><circle cx="450" cy="250" r="145" fill="#fff" opacity=".10"/><text x="450" y="305" text-anchor="middle" font-size="170" font-family="Arial,sans-serif" fill="#fff">${ex?.emoji||'🏋️'}</text><text x="55" y="85" font-size="26" font-family="Arial,sans-serif" fill="#fff" opacity=".82">REPTRACK · EXERCISE GUIDE</text></svg>`;
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
   }
-  function cover(ex, className='thumb'){ return `<span class="${className}" style="background-image:url('${imageFor(ex).replace(/'/g,'%27')}')"></span>`; }
+  function cover(ex, className='thumb'){ return `<span class="${className}" role="img" aria-label="${esc(ex.name)}" style="background-image:url('${imageFor(ex).replace(/'/g,'%27')}')"></span>`; }
 
   function render(){
     setNav();
@@ -275,7 +383,11 @@
     const previous=previousSets(ex.id);
     const rows=Math.max(3,saved.length+1,extraRows[ex.id]||0);
     return `<article class="card exercise-card">
-      <div class="exercise-cover" style="background-image:url('${imageFor(ex).replace(/'/g,'%27')}')"><span class="muscle">${esc(muscleSr[ex.muscle]||ex.muscle)}</span><h3>${esc(ex.name)}</h3></div>
+      <div class="exercise-cover">
+        <img class="exercise-photo" src="${esc(imageFor(ex))}" alt="Prikaz vežbe: ${esc(ex.name)}" loading="lazy" decoding="async">
+        <span class="muscle">${esc(muscleSr[ex.muscle]||ex.muscle)}</span>
+      </div>
+      <div class="exercise-heading"><h3>${esc(ex.name)}</h3></div>
       <div class="exercise-body">${ex.sets?`<div class="prescription"><b>Plan: ${ex.sets} serije × ${esc(ex.reps)}</b><span>⏱ Pauza ${esc(ex.rest)}</span></div><div class="technique"><b>Kako se izvodi</b><p>${esc(ex.how||'Izvodi pokret kontrolisano i bez zamaha.')}</p><small>💡 ${esc(ex.tips||'Zadrži pravilnu tehniku tokom svih ponavljanja.')}</small></div>`:''}<div class="previous"><div class="previous-label"><span>Prošli put</span><span>${previous.length?shortDate(workoutsForExercise(ex.id)[0].date):'Nema rezultata'}</span></div>${previous.length?`<div class="set-chips">${previous.map(s=>`<span class="set-chip">${s.weight} kg × ${s.reps}</span>`).join('')}</div>`:'<div style="color:var(--muted);font-size:12px;margin-top:8px">Ovo će biti tvoj početni rezultat.</div>'}</div>
       <div class="field-labels"><span>Set</span><span>KG</span><span></span><span>Reps</span><span></span></div>
       ${Array.from({length:rows},(_,i)=>renderSetRow(ex.id,i+1,saved.find(s=>s.setNumber===i+1))).join('')}<div class="exercise-actions"><button class="secondary" data-add-set="${ex.id}">＋ Dodaj set</button><button class="ghost" data-copy-last="${ex.id}" ${previous.length?'':'disabled'}>Kopiraj prošli</button></div></div>

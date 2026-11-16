@@ -1,0 +1,34 @@
+REPTRACK V5 — NOVI SVETLI DIZAJN, CELE FOTOGRAFIJE I TAJMER
+
+PAKET SADRŽI:
+- index.html — kompletna aplikacija sa ugrađenim slikama vežbi
+- sw.js — novi service worker sa V5 cache verzijom
+- manifest.json i ikone — instalacija na iPhone / PWA
+
+BIBLIOTEKA:
+U dostavljenoj V4 osnovi nalazi se 68 vežbi: 9 osnovnih + 59 dodatnih vežbi.
+Sve su zadržane. Fotografije su ugrađene u index.html; ne postoji images folder koji treba posebno otpremati.
+
+FUNKCIJE:
+- Full Body A / B / C planovi
+- Biblioteka, pretraga i filteri opreme
+- Evidencija kg i ponavljanja po seriji
+- Tajmer pauze: pokreni, pauziraj, nastavi, +15 sekundi i zatvori
+- Prethodni rezultati, istorija, progres i lični rekordi
+- Lokalno čuvanje podataka, backup i uvoz
+
+FOTOGRAFIJE:
+Glavne fotografije su prikazane kao cele slike (object-fit: contain), bez sečenja ivica ili delova tela.
+
+OBJAVA:
+1. Napravi backup iz aplikacije ako imaš važne treninge.
+2. Raspakuj ovaj ZIP.
+3. U GitHub repozitorijumu otvori main branch i root folder.
+4. Add file > Upload files.
+5. Otpremi 6 aplikacionih fajlova u root (index.html, sw.js, manifest.json i 3 ikone). README/UPUTSTVO.txt služi samo kao uputstvo i nije potreban za rad sajta.
+6. Potvrdi Commit changes.
+7. Sačekaj da GitHub Actions / Pages završi objavu.
+8. Zatvori stare RepTrack tabove u Safari-ju i otvori sajt ponovo.
+
+VAŽNO:
+Ne briši podatke sajta u Safari-ju. Aplikacija zadržava postojeći localStorage ključ reptrack-data-v1 kako bi sačuvala treninge i istoriju na istom uređaju.
