@@ -1,4 +1,4 @@
-const CACHE = 'reptrack-v5-light-full-images';
+const CACHE = 'reptrack-v6-hd-images';
 const FILES = ['./', './index.html', './manifest.json', './icon.svg', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', event => {
